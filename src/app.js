@@ -15,15 +15,18 @@ app.post("/", function (req, res) {
   const maxAndSecondMax = MaxAndSecondMax(req.body);
 
   res.send({
-    max: maxAndSecondMax.max,
-    secondMax: maxAndSecondMax.secondMax,
+    statusCode: 200,
+    message: {
+      max: maxAndSecondMax.max,
+      secondMax: maxAndSecondMax.secondMax,
+    },
   });
 });
 
 app.all("*", function (req, res) {
   res.status(404);
   res.send({
-    status: 404,
+    statusCode: 404,
     message: "Not Found",
   });
 });
@@ -37,6 +40,7 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.send({
+    statusCode: parseInt(err.status || 500),
     message: err.message,
   });
 });
