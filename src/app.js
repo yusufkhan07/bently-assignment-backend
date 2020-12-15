@@ -31,15 +31,10 @@ app.post("/", function (req, res) {
   });
 });
 
-app.get("/logs", function (req, res) {
+app.get("/logs.json", function (req, res) {
   let logs = require("../request_logs.json") || [];
 
-  res.send({
-    statusCode: 200,
-    message: {
-      logs,
-    },
-  });
+  res.send(logs);
 });
 
 // global 404 error handler
