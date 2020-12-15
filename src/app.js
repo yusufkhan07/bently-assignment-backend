@@ -4,6 +4,7 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const jsonLogger = require("./json-logger");
 const MaxAndSecondMax = require("./max-second-max");
 
 //enable cors
@@ -14,6 +15,9 @@ app.use(logger("dev"));
 
 // parse application/json
 app.use(bodyParser.json());
+
+// custom logger
+app.use(jsonLogger);
 
 app.post("/", function (req, res) {
   const maxAndSecondMax = MaxAndSecondMax(req.body);
