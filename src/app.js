@@ -2,8 +2,12 @@ const express = require("express");
 const app = express();
 const logger = require("morgan");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const MaxAndSecondMax = require("./max-second-max");
+
+//enable cors
+app.use(cors());
 
 // log in console
 app.use(logger("dev"));
