@@ -31,6 +31,18 @@ app.post("/", function (req, res) {
   });
 });
 
+app.get("/logs", function (req, res) {
+  let logs = require("../request_logs.json") || [];
+
+  res.send({
+    statusCode: 200,
+    message: {
+      logs,
+    },
+  });
+});
+
+// global 404 error handler
 app.all("*", function (req, res) {
   res.status(404);
   res.send({
@@ -39,7 +51,7 @@ app.all("*", function (req, res) {
   });
 });
 
-// error handler
+// global error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
