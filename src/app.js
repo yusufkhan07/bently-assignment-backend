@@ -1,12 +1,18 @@
 const express = require("express");
 const app = express();
 const logger = require("morgan");
+const bodyParser = require("body-parser");
+
 const MaxAndSecondMax = require("./max-second-max");
 
+// log in console
 app.use(logger("dev"));
 
+// parse application/json
+app.use(bodyParser.json());
+
 app.post("/", function (req, res) {
-  const maxAndSecondMax = MaxAndSecondMax([1, 23, 3, "45"]);
+  const maxAndSecondMax = MaxAndSecondMax(req.body);
 
   res.send({
     max: maxAndSecondMax.max,
