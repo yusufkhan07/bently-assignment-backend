@@ -8,6 +8,14 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
+app.all("*", function (req, res) {
+  res.status(404);
+  res.send({
+    status: 404,
+    message: "Not Found",
+  });
+});
+
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
