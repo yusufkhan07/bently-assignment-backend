@@ -1,12 +1,12 @@
-var express = require("express");
-var app = express();
-var logger = require("morgan");
-var MaxAndSecondMax = require("./max-second-max");
+const express = require("express");
+const app = express();
+const logger = require("morgan");
+const MaxAndSecondMax = require("./max-second-max");
 
 app.use(logger("dev"));
 
 app.post("/", function (req, res) {
-  let maxAndSecondMax = MaxAndSecondMax([1, 23, 3, "45"]);
+  const maxAndSecondMax = MaxAndSecondMax([1, 23, 3, "45"]);
 
   res.send({
     max: maxAndSecondMax.max,

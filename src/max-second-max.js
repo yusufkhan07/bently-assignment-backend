@@ -7,9 +7,9 @@ function MaxAndSecondMax(arr) {
     throw new Error("Array must only contain numberic values");
   }
 
-  var max = Math.max.apply(null, arr);
+  const max = Math.max.apply(null, arr);
   arr.splice(arr.indexOf(max), 1);
-  var secondMax = Math.max.apply(null, arr);
+  const secondMax = Math.max.apply(null, arr);
 
   return {
     max,
