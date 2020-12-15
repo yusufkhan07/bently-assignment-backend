@@ -1,11 +1,17 @@
 var express = require("express");
 var app = express();
 var logger = require("morgan");
+var MaxAndSecondMax = require("./max-second-max");
 
 app.use(logger("dev"));
 
-app.get("/", function (req, res) {
-  res.send("Hello World");
+app.post("/", function (req, res) {
+  let maxAndSecondMax = MaxAndSecondMax([1, 23, 3, "45"]);
+
+  res.send({
+    max: maxAndSecondMax.max,
+    secondMax: maxAndSecondMax.secondMax,
+  });
 });
 
 app.all("*", function (req, res) {
@@ -25,7 +31,7 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.send({
-    error: err.message,
+    message: err.message,
   });
 });
 
