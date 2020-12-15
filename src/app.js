@@ -5,7 +5,7 @@ var logger = require("morgan");
 app.use(logger("dev"));
 
 app.get("/", function (req, res) {
-  res.send("Hello world 2!");
+  res.send("Hello World");
 });
 
 // error handler
