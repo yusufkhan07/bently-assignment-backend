@@ -26,6 +26,8 @@ function jsonLogger(req, res, next) {
     status,
   };
 
+  // TODO: test if the logging file exist and then continue; remove log file from git.
+
   let logs = require("../request_logs.json") || [];
   logs.push(log);
 
